@@ -54,17 +54,6 @@ app.use(express.static(path.join(__dirname, "/assets")));
 var routes = require("./routes/welcome");
 app.use("/", routes);
 
-app.get("/about", function (req, res) {
-  res.render("about");
-});
-
-app.get("/feedback", function (req, res) {
-  res.render("feedback");
-});
-
-app.get("/contact", function (req, res) {
-  res.render("contact");
-});
 app.set("port", process.env.PORT || 3000);
 
 app.listen(app.get("port"), function () {

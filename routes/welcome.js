@@ -18,6 +18,18 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
+router.get("/about", function (req, res) {
+  res.render("about");
+});
+
+router.get("/feedback", function (req, res) {
+  res.render("feedback");
+});
+
+router.get("/contact", function (req, res) {
+  res.render("contact");
+});
+
 // Register
 router.post('/register', (req, res) => {
   const { required, name, email, password, confirmpassword, gender, Hall, Room, Address, birthday, phone, profile_pic} = req.body;
