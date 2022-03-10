@@ -28,11 +28,13 @@
       <% if (isPost == true) { %>
       <div class="post-container">
         <% if(data.length != 0) {%>
-        <h3>Following is the list of users we found :</h3>
+        <h3>
+          Result based upon your search :
+        </h3>
         <% } %>
         <ul id="matched-list">
           <% var i = 0; for( i = 0; i < data.length; i++) {%>
-          <li><%= data[i]._id%></li>
+          <li><%= data[i].posted_by%></li>
           <%} if(i == 0){%>
           <h3>Sorry we haven't found any user!</h3>
           <h3>Kindly fill the <a href="/travelform">Travel Form</a>.</h3>
@@ -43,7 +45,10 @@
       <%}%> <% if(isPost ==false){%>
       <div class="container">
         <form action="/search" method="POST" class="search-bar">
-          <input type="text" placeholder="Destination" name="destination" />
+          <input type="text" placeholder="Destination" name="destination"  />
+          <input type="date" name="date">
+          <input type="time" value="12:00">
+
           <button type="submit">
             <img src="css/images/search.jpg" alt="" />
           </button>
