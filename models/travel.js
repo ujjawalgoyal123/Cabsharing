@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const TravelSchema = new mongoose.Schema({
+  posted_by: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
   origin: {
      type: String,
      required: true

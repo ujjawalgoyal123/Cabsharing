@@ -193,12 +193,15 @@ router.get('/travelform', ensureAuthenticated, (req, res) =>
 router.post('/travelform', (req, res) => {
 
   console.log(req.body)
-  const {   origin, destination, Noof, Gen, Departuredate,time } = req.body;
+  const {   origin,         posted_by,
+    email, destination, Noof, Gen, Departuredate,time } = req.body;
   let errors = [];
   if (errors.length > 0) {
     res.render('travelform', {
       errors,
       origin,
+      posted_by,
+      email,
       destination,
       Noof,
       Gen,
@@ -209,12 +212,16 @@ router.post('/travelform', (req, res) => {
 
         const newTravel = new Travel({
         origin,
+        posted_by,
+        email,
         destination,
         Noof,
         Gen,
         Departuredate,
         time
-        });    
+        }); 
+        newTravel.posted_by = req.user.name;
+        newTravel.email = req.user.email;   
         newTravel.save()
         res.redirect('/travelform');
       }
