@@ -480,3 +480,12 @@ body {
   background-color:#58629b ;
   cursor: pointer;
 }
+
+.post-container{
+  color: #cac7ff;
+}
+
+.post-container a{
+  text-decoration: none;
+  color: whitesmoke;
+}
