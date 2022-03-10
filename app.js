@@ -6,7 +6,7 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-
+const jsonParser = bodyParser.jsonParser
 var app = express();
 
 require("./config/passport")(passport);
@@ -53,6 +53,18 @@ app.use(express.static(path.join(__dirname, "/assets")));
 
 var routes = require("./routes/welcome");
 app.use("/", routes);
+
+app.get("/search", function (req, res) {
+  res.render("search", { isPost: false });
+});
+
+app.post("/search", jsonParser, function (req, res) {
+  const destination = req.body.destination;
+  var regex = new RegExp(destination);
+  Travel.find({ destination: regex }).then((result) => {
+    res.render("search", { isPost: true, data: result });
+  });
+});
 
 app.set("port", process.env.PORT || 3000);
 
