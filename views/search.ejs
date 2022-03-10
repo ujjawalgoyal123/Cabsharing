@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <title>Landing Page Design Using HTML & CSS</title>
+  </head>
+  <body>
+    <div class="background_img">
+      <div class="header">
+        <img src="css/images/Cab-Sharing.svg" alt="" class="logo" />
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="/login"><button class="btn" id="btn1">Log In</button></a>
+        <a href="/register"><button class="btn" id="btn2">Sign Up</button></a>
+      </div>
+
+      <% if (isPost == true) { %>
+      <div class="post-container">
+        <% if(data.length != 0) {%>
+        <h3>Following is the list of users we found :</h3>
+        <% } %>
+        <ul id="matched-list">
+          <% var i = 0; for( i = 0; i < data.length; i++) {%>
+          <li><%= data[i]._id%></li>
+          <%} if(i == 0){%>
+          <h3>Sorry we haven't found any user!</h3>
+          <h3>Kindly fill the <a href="/travelform">Travel Form</a>.</h3>
+          <h3>We will update you!</h3>
+          <%}%>
+        </ul>
+      </div>
+      <%}%> <% if(isPost ==false){%>
+      <div class="container">
+        <form action="/search" method="POST" class="search-bar">
+          <input type="text" placeholder="Destination" name="destination" />
+          <button type="submit">
+            <img src="css/images/search.jpg" alt="" />
+          </button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .background_img {
   height: 100vh;
@@ -59,7 +59,7 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 600;
@@ -71,13 +71,13 @@ nav ul li a {
   border: 1px solid #5e97d1;
   cursor: pointer;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 17px;
   font-weight: 700;
   padding: 12px 20px;
   margin: 10px;
   text-decoration: none;
-  box-shadow: 1px 4px 12px rgba(94,28,68,.15);
+  box-shadow: 1px 4px 12px rgba(94, 28, 68, 0.15);
   text-shadow: 0px 1px 0px #528ecc;
 }
 #btn2 {
@@ -87,13 +87,13 @@ nav ul li a {
   border: 1px solid #cbcbcb;
   cursor: pointer;
   color: #5e97d1;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 17px;
   font-weight: 700;
   padding: 12px 20px;
   margin: 10px;
   text-decoration: none;
-  box-shadow: 1px 4px 12px rgba(94,28,68,.15);
+  box-shadow: 1px 4px 12px rgba(94, 28, 68, 0.15);
   text-shadow: 0px 1px 0px #cbcbcb;
 }
 .btn3 {
@@ -103,19 +103,19 @@ nav ul li a {
   border: 1px solid #5e97d1;
   cursor: pointer;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 17px;
   font-weight: 700;
   padding: 12px 20px;
   margin: 10px;
   text-decoration: none;
-  box-shadow: 1px 4px 12px rgba(94,28,68,.15);
+  box-shadow: 1px 4px 12px rgba(94, 28, 68, 0.15);
   text-shadow: 0px 1px 0px #528ecc;
 }
 .btn:hover {
-  box-shadow: 3px 8px 22px rgba(94,28,68,.15);
+  box-shadow: 3px 8px 22px rgba(94, 28, 68, 0.15);
   transform: scale(1.1);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .img-1 {
   position: relative;
@@ -124,27 +124,27 @@ nav ul li a {
   align-items: center;
   justify-content: space-between;
 }
-.img-1  .text {
+.img-1 .text {
   position: relative;
   max-width: 600px;
 }
-.img-1  .text h1 {
-  font-family: 'Poppins', sans-serif;
+.img-1 .text h1 {
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 800;
   margin-top: 250px;
   line-height: 1.5em;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   font-size: 40px;
   color: #fff;
 }
-.img-1  .text h1 span {
+.img-1 .text h1 span {
   font-size: 50px;
 }
-.img-1  .text p {
+.img-1 .text p {
   font-size: 17px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   margin-top: 40px;
   color: #e7e3e3;
 }
@@ -156,7 +156,6 @@ nav ul li a {
   margin-top: 80px;
   padding-left: 850px;
   justify-content: flex-end;
-  
 }
 
 /* Login */
@@ -174,10 +173,8 @@ nav ul li a {
   transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 60px 30px;
-  box-shadow: 1px 4px 12px rgba(94,28,68,.15);
+  box-shadow: 1px 4px 12px rgba(94, 28, 68, 0.15);
 }
-
-
 
 h1 {
   margin: 0;
@@ -244,8 +241,7 @@ input[type="password"] {
   transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 30px 30px;
-  box-shadow: 1px 4px 12px rgba(94,28,68,.15);
-  
+  box-shadow: 1px 4px 12px rgba(94, 28, 68, 0.15);
 }
 
 h1 {
@@ -276,7 +272,6 @@ h1 {
   border-radius: 2px;
   box-sizing: border-box;
 }
-
 
 .log input[type="text"],
 input[type="password"] {
@@ -376,12 +371,12 @@ input[type="password"] {
   color: black;
 }
 
-
 /* profile */
-body{margin-top:0px;
-  background-color:#f2f6fc;
-  color:#69707a;
-  }
+body {
+  margin-top: 0px;
+  background-color: #f2f6fc;
+  color: #69707a;
+}
 .img-account-profile {
   height: 10rem;
 }
@@ -403,7 +398,8 @@ body{margin-top:0px;
   background-color: rgba(33, 40, 50, 0.03);
   border-bottom: 1px solid rgba(33, 40, 50, 0.125);
 }
-.form-cont, .dataTable-input {
+.form-cont,
+.dataTable-input {
   display: block;
   width: 100%;
   padding: 0.875rem 1.125rem;
@@ -436,4 +432,60 @@ body{margin-top:0px;
   padding-right: 0;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.container {
+  width: 75%;
+  min-height: 100vh;
+  padding: 5%;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 10px 20px;
+}
+
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 20px;
+  color: #cac7ff;
+}
+
+::placeholder {
+  color: #cac7ff;
+}
+
+.search-bar button img{
+ width: 25px;
+}
+
+.search-bar button{
+  border: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-color:#58629b ;
+  cursor: pointer;
+}
+
+.post-container{
+  color: #cac7ff;
+}
+
+.post-container a{
+  text-decoration: none;
+  color: whitesmoke;
 }
