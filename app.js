@@ -55,6 +55,26 @@ app.use(express.static(path.join(__dirname, "/assets")));
 var routes = require("./routes/welcome");
 app.use("/", routes);
 
+var routelog = require("./routes/login");
+app.use("/login", routelog);
+
+var routereg = require("./routes/register");
+app.use("/register", routereg);
+
+var routedash = require("./routes/dashboard");
+app.use("/dashboard", routedash);
+
+var routeout = require("./routes/logout");
+app.use("/logout", routeout);
+
+var routetravel = require("./routes/travelform");
+app.use("/travelform", routetravel);
+
+var routeprofile = require("./routes/profile");
+app.use("/profile", routeprofile);
+
+
+
 var routeSearch = require("./routes/search");
 app.use("/search", routeSearch);
 
