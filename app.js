@@ -53,9 +53,7 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, "/assets")));
 
 var routes = require("./routes/welcome");
-var routess = require("./routes/search");
 app.use("/", routes);
-app.use("/search", routess);
 
 var routeSearch = require("./routes/search");
 app.use("/search", routeSearch);

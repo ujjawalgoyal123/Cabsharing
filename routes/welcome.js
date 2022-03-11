@@ -20,7 +20,7 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 router.get("/about", function (req, res) {
   res.render("about");
-});app.use(express.static(path.join(__dirname, "/search/assets")));
+});
 
 router.get("/feedback", function (req, res) {
   res.render("feedback");
