@@ -57,27 +57,18 @@ const User = require("./models/User");
 const Travel = require("./models/travel");
 app.use("/", routes);
 
-app.get("/search", function (req, res) {
-  res.render("search", { isPost: false });
-});
+var routeSearch = require("./routes/search");
+app.use("/search", routeSearch);
 
-app.post("/search", jsonParser, function (req, res) {
-  const destination = req.body.destination;
-  const date = req.body.date;
-  const time = req.body.time;
-  console.warn(date, time);
-  Travel.find({
-    destination: destination,
-    Departuredate: date,
-    time: time,
-  }).then((result) => {
-    res.render("search", { isPost: true, data: result });
+app.post("/request", jsonParser, function (req, res) {
+  const reciver_email = req.body.reciver_email;
+  console.warn(reciver_email);
+  User.findOne({ email: reciver_email }).then((result) => {
+    res.render("request", { reciver: result });
+    res.end();
   });
 });
 
-app.get("/request", function (req, res) {
-  res.render("request");
-});
 app.set("port", process.env.PORT || 3000);
 
 app.listen(app.get("port"), function () {

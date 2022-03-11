@@ -442,3 +442,26 @@ body {
   text-decoration: none;
   color: whitesmoke;
 }
+
+/* temporary */
+.search-bar{
+  align-content: center;
+  position: relative;
+  height: 600px;
+  width: 600px;
+}
+.search-bar input{
+  height: 50px;
+}
+.search-logo{
+  background-color: #0061f2;
+  background: #0061f2;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.request-form{
+  display: flex;
+  justify-content: space-between;
+}
