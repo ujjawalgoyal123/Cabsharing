@@ -7,6 +7,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
+const uc = require("upper-case");
 var app = express();
 
 require("./config/passport")(passport);
@@ -56,6 +57,17 @@ var routess = require("./routes/search");
 app.use("/", routes);
 app.use("/search", routess);
 
+var routeSearch = require("./routes/search");
+app.use("/search", routeSearch);
+
+app.post("/request", jsonParser, function (req, res) {
+  const reciver_email = req.body.reciver_email;
+  console.warn(reciver_email);
+  User.findOne({ email: reciver_email }).then((result) => {
+    res.render("request", { reciver: result });
+    res.end();
+  });
+});
 
 app.set("port", process.env.PORT || 3000);
 
