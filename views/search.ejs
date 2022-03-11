@@ -48,9 +48,10 @@
       <%}%> <% if(isPost ==false){%>
       <div class="container">
         <form action="/search" method="POST" class="search-bar">
+          <input type="text" placeholder="origin" name="origin" />
           <input type="text" placeholder="Destination" name="destination" />
           <input type="date" name="date" />
-          <input type="time" name="time" value="12:00" />
+
           <button type="submit">
             <img class="search-logo" src="css/images/search.jpg" alt="" />
           </button>

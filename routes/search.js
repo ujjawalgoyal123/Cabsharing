@@ -18,20 +18,85 @@ router.get("/",ensureAuthenticated, function (req, res) {
 router.post("/", jsonParser, function (req, res) {
   const destination = req.body.destination;
   const date = req.body.date;
-  const time = req.body.time;
-  console.warn(date, time);
+  const origin = req.body.origin;
+  if((destination != "") && (date != "") && (origin!= "")){
   Travel.find({
     destination: destination,
     Departuredate: date,
-    time: time,
+    origin: origin,
   })
     .then((result) => {
-      console.warn("submitted!");
       res.render("search", { isPost: true, data: result });
     })
     .catch((err) => {
       console.warn(err);
     });
+  }else if((destination != "") && (date == "") && (origin != "")){
+    Travel.find({
+      destination: destination,
+      origin: origin,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }else if((destination == "") && (date != "") && (origin != "")){
+    Travel.find({
+      Departuredate: date,
+      origin: origin,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });    
+  }else if((destination != "") && (date != "") && (origin == "")){
+    Travel.find({
+      destination: destination,
+      Departuredate: date,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }else if((destination == "") && (date != "") && (origin == "")){
+    Travel.find({
+      Departuredate: date,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }else if((destination == "") && (date == "") && (origin != "")){
+    Travel.find({
+      origin: origin,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });    
+  }else if((destination != "") && (date == "") && (origin == "")){
+    Travel.find({
+      destination: destination,
+    })
+      .then((result) => {
+        res.render("search", { isPost: true, data: result });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });  
+  }else{
+    res.redirect("search");
+  }
 });
 
 module.exports = router;
