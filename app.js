@@ -52,22 +52,10 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, "/assets")));
 
 var routes = require("./routes/welcome");
-const User = require("./models/User");
-const Travel = require("./models/travel");
+var routess = require("./routes/search");
 app.use("/", routes);
+app.use("/search", routess);
 
-app.get("/search", function (req, res) {
-  res.render("search", { isPost: false });
-});
-
-app.post("/search", jsonParser, function (req, res) {
-  const destination = req.body.destination;
-  var regex = new RegExp(destination);
-  Travel.find({ destination: regex }).then((result) => {
-    console.warn(result.length);
-    res.render("search", { isPost: true, data: result });
-  });
-});
 
 app.set("port", process.env.PORT || 3000);
 

@@ -20,7 +20,7 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 router.get("/about", function (req, res) {
   res.render("about");
-});
+});app.use(express.static(path.join(__dirname, "/search/assets")));
 
 router.get("/feedback", function (req, res) {
   res.render("feedback");
@@ -192,7 +192,6 @@ router.get('/travelform', ensureAuthenticated, (req, res) =>
 
 router.post('/travelform', (req, res) => {
 
-  console.log(req.body)
   const {   origin,         posted_by,
     email, destination, Noof, Gen, Departuredate,time } = req.body;
   let errors = [];
@@ -221,7 +220,9 @@ router.post('/travelform', (req, res) => {
         time
         }); 
         newTravel.posted_by = req.user.name;
-        newTravel.email = req.user.email;   
+        newTravel.email = req.user.email;  
+        newTravel.Departuredate = newTravel.Departuredate + " ";
+        console.log(newTravel) 
         newTravel.save()
         res.redirect('/travelform');
       }

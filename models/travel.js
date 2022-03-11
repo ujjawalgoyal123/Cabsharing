@@ -26,7 +26,7 @@ const TravelSchema = new mongoose.Schema({
     required: true
   },
   Departuredate: {
-    type: String,
+    type: Date,
     required: true
   },
   time: {
