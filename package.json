@@ -20,6 +20,7 @@
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "upper-case": "^2.0.2",
     "validate-date": "^2.0.0"
   },
   "scripts": {
