@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Landing Page Design Using HTML & CSS</title>
+</head>
+<body>
+    <div class="background_img">
+        <div class="header">
+            <img src="css/images/Cab-Sharing.svg" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Feedback</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="/login"><button class="btn" id="btn1">Log In</button></a>
+            <a href="/register"><button class="btn" id="btn2">Sign Up</button></a>
+        </div>
+        <div class="img-1 ">
+            <div class="log" >
+                <h1 style="font-size:30px;">Register</h1>
+                <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <p style="font-size:10px;"> <%= error.msg %></p>
+                      </div>
+                    <% }); %> <% } %> <% if(success_msg != ''){ %>
+                            <div class="success">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p style="font-size:10px;"> <%= success_msg %></p>
+                              </div>
+                        <% } %> <% if(error_msg != ''){ %>
+                            <div class="alert">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p style="font-size:10px;"> <%= error_msg %></p>
+                              </div>
+                        <% } %> <% if(error != ''){ %>
+                            <div class="alert">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p style="font-size:10px;"> <%= error %></p>
+                              </div>
+                        <% } %>                        
+                <form action="/register" method="POST">
+                    <p>Register as?</p>
+                    <select id="required" name = "required" class="form-select">
+                        <option  value="Student">Student
+                        </option>
+                        <option  value="Driver">Driver</option>
+                      </select> 
+                    <p>Name</p>
+                    <input type="text" id= "name" name= "name" class="form-control" placeholder="Enter Name" required>
+                    <p>Gender</p>
+                    <select type="text" id="gender" name = "gender" class="form-select">
+                        <option  value="Male">Male
+                        </option>
+                        <option  value="Female">Female</option>
+                        <option  value="Other">other</option>
+                      </select> 
+                    <p>Email</p>
+                    <input type="text" id= "email" name= "email" class="form-control" placeholder="Enter Email" required>
+                    <p>Password</p>
+                    <input type="Password" id="password" name="password"  class="form-control" placeholder="Enter Password" required>
+                    <p>Confirm Password</p>
+                    <input type="Password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confirm Password" required>
+                    <input type="submit" class="btn btn-primary btn-block" value="Register"><br>
+                    <a href="./login">Already have account?</a>
+    
+                </form>
+            </div>
+            <div class="img-2">
+                <img src="css/images/car.png" width="1024" height="700" alt="">
+                </div>
+       </div>
+   </div>
+</body>
+</html>
