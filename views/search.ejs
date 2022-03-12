@@ -11,7 +11,9 @@
   <body>
     <div class="background_img">
       <div class="header">
-        <a href="/"><img src="css/images/Cab-Sharing.svg" class="logo" /></a>
+        <a href="/"
+          ><img src="css/images/Cab-Sharing.svg" alt="" class="logo"
+        /></a>
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
@@ -34,7 +36,11 @@
           <li>
             <%= data[i].posted_by%>
             <form class="request-form" action="/request" method="POST">
-              <input name="reciver_email" type="hidden" value="<%=data[i].email%>" />
+              <input
+                name="reciver_email"
+                type="hidden"
+                value="<%=data[i].email%>"
+              />
               <button class="btn" type="submit">Request</button>
             </form>
           </li>
@@ -51,7 +57,6 @@
           <input type="text" placeholder="origin" name="origin" />
           <input type="text" placeholder="Destination" name="destination" />
           <input type="date" name="date" />
-
           <button type="submit">
             <img class="search-logo" src="css/images/search.jpg" alt="" />
           </button>

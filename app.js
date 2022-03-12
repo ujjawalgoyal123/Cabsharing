@@ -73,19 +73,11 @@ app.use("/travelform", routetravel);
 var routeprofile = require("./routes/profile");
 app.use("/profile", routeprofile);
 
-
-
 var routeSearch = require("./routes/search");
 app.use("/search", routeSearch);
 
-app.post("/request", jsonParser, function (req, res) {
-  const reciver_email = req.body.reciver_email;
-  console.warn(reciver_email);
-  User.findOne({ email: reciver_email }).then((result) => {
-    res.render("request", { reciver: result });
-    res.end();
-  });
-});
+var routeRequest = require("./routes/request");
+app.use("/request", routeRequest);
 
 app.set("port", process.env.PORT || 3000);
 
