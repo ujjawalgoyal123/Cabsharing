@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema({
    },
    Journey_id :[
       {
-        type: String, ref: 'travel'
+        type: String, ref: 'Travel'
       }
    ],
    date: {

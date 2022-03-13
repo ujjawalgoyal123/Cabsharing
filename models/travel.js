@@ -35,12 +35,12 @@ const TravelSchema = new mongoose.Schema({
   },
   accept:[
     {
-      type: String, ref: 'user'
+      type: String, ref: 'User'
     }
  ],
  pending:[
   {
-    type: String, ref: 'user'
+    type: String, ref: 'User'
   }
 ],
   date: {
