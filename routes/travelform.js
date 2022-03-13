@@ -57,6 +57,7 @@ router.post('/', (req, res) => {
         newTravel.posted_by = req.user.name;
         newTravel.email = req.user.email;  
         newTravel.Departuredate = newTravel.Departuredate ;
+        newTravel.accept.push(req.user.email);
         newTravel.save()
         res.redirect('/travelform');
       }
