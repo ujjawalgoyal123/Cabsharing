@@ -39,6 +39,11 @@ const UserSchema = new mongoose.Schema({
    profile_pic: {
     type: String,
    },
+   Journey_id :[
+      {
+        type: String, ref: 'travel'
+      }
+   ],
    date: {
     type: Date,
     default: Date.now

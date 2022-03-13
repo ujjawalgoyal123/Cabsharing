@@ -24,6 +24,8 @@ router.post('/', (req, res) => {
   const {   origin,         posted_by,
     email, destination, Noof, Gen, Departuredate,time } = req.body;
   let errors = [];
+  let accept = [];
+  let pending =[];
   if (errors.length > 0) {
     res.render('travelform', {
       errors,
@@ -34,6 +36,8 @@ router.post('/', (req, res) => {
       Noof,
       Gen,
       Departuredate,
+      accept,
+      pending,
       time
     });
   } else {
@@ -45,13 +49,14 @@ router.post('/', (req, res) => {
         destination,
         Noof,
         Gen,
+        accept,
+        pending,
         Departuredate,
         time
         }); 
         newTravel.posted_by = req.user.name;
         newTravel.email = req.user.email;  
-        newTravel.Departuredate = newTravel.Departuredate + " ";
-        console.log(newTravel) 
+        newTravel.Departuredate = newTravel.Departuredate ;
         newTravel.save()
         res.redirect('/travelform');
       }
