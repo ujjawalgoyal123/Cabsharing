@@ -26,6 +26,9 @@ router.post('/', (req, res) => {
   let errors = [];
   let accept = [];
   let pending =[];
+  if (!origin || !destination || !Noof || !Gen || !Departuredate || !time) {
+    errors.push({ msg: 'Please enter all fields' });
+  }
   if (errors.length > 0) {
     res.render('travelform', {
       errors,
@@ -58,7 +61,19 @@ router.post('/', (req, res) => {
         newTravel.email = req.user.email;  
         newTravel.Departuredate = newTravel.Departuredate ;
         newTravel.accept.push(req.user.email);
+        let a = newTravel._id;
         newTravel.save()
+        User.findOne({
+          email: req.user.email
+      }, function(err, user) {
+          if (err) {
+              return res.send({
+                  error: err
+              });
+          }
+          user.Journey_id.push(a);
+          user.save()
+        });
         res.redirect('/travelform');
       }
     });
