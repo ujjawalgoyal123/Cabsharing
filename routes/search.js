@@ -48,6 +48,8 @@ router.post("/", jsonParser, function (req, res) {
         destination: destination,
         Departuredate: date,
         origin: origin,
+        email: { $ne: req.user.email },
+        Noof: { $lt: this.accept.length },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -59,6 +61,7 @@ router.post("/", jsonParser, function (req, res) {
       Travel.find({
         destination: destination,
         origin: origin,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -70,6 +73,7 @@ router.post("/", jsonParser, function (req, res) {
       Travel.find({
         Departuredate: date,
         origin: origin,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -81,6 +85,7 @@ router.post("/", jsonParser, function (req, res) {
       Travel.find({
         destination: destination,
         Departuredate: date,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -91,6 +96,7 @@ router.post("/", jsonParser, function (req, res) {
     } else if (destination == "" && date != "" && origin == "") {
       Travel.find({
         Departuredate: date,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -101,6 +107,7 @@ router.post("/", jsonParser, function (req, res) {
     } else if (destination == "" && date == "" && origin != "") {
       Travel.find({
         origin: origin,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -111,6 +118,7 @@ router.post("/", jsonParser, function (req, res) {
     } else if (destination != "" && date == "" && origin == "") {
       Travel.find({
         destination: destination,
+        email: { $ne: req.user.email },
       })
         .then((result) => {
           res.render("search", { isPost: true, data: result, user: req.user });
@@ -132,8 +140,7 @@ router.post("/", jsonParser, function (req, res) {
         pending.push(user.email);
         journey.save();
       }
-      const pos = deleteJourney(journeyList, journey);
-      console.warn(pos);
+
       res.render("search", { isPost: true, data: journeyList });
     });
   }
