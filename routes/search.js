@@ -49,10 +49,16 @@ router.post("/", jsonParser, function (req, res) {
         Departuredate: date,
         origin: origin,
         email: { $ne: req.user.email },
-        Noof: { $lt: this.accept.length },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -64,7 +70,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -76,7 +89,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -88,7 +108,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -99,7 +126,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -110,7 +144,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -121,7 +162,14 @@ router.post("/", jsonParser, function (req, res) {
         email: { $ne: req.user.email },
       })
         .then((result) => {
-          res.render("search", { isPost: true, data: result, user: req.user });
+          var filterResult = result.filter(function (element) {
+            return element.accept.length < element.Noof;
+          });
+          res.render("search", {
+            isPost: true,
+            data: filterResult,
+            user: req.user,
+          });
         })
         .catch((err) => {
           console.warn(err);
@@ -130,18 +178,20 @@ router.post("/", jsonParser, function (req, res) {
       res.redirect("search");
     }
   } else {
-    const user = req.user;
     var journeyList = modify(JSON.parse(req.body.journeyList)); // the data type of Departuredate and date changed to string
     const journeyID = req.body.journeyID;
 
     Travel.findById(journeyID).then((journey) => {
       const pending = journey.pending;
-      if (pending.indexOf(user.email) == -1) {
-        pending.push(user.email);
+      if (pending.indexOf(req.user.email) == -1) {
+        pending.push(req.user.email);
         journey.save();
       }
-
-      res.render("search", { isPost: true, data: journeyList });
+      //i have to remove the already requested one
+      var newJourneyList = journeyList.filter(function (element) {
+        return element._id != journeyID;
+      });
+      res.render("search", { isPost: true, data: newJourneyList });
     });
   }
 });
