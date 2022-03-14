@@ -67,7 +67,6 @@ app.use("/dashboard", routedash);
 var routedashdriver = require("./routes/dashboarddriver");
 app.use("/dashboarddriver", routedashdriver);
 
-
 var routeout = require("./routes/logout");
 app.use("/logout", routeout);
 
