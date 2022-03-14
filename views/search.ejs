@@ -35,12 +35,13 @@
           <% var i = 0; for( i = 0; i < data.length; i++) {%>
           <li>
             <%= data[i].posted_by%>
-            <form class="request-form" action="/request" method="POST">
+            <form class="request-form" action="/update" method="POST">
               <input
-                name="reciver_email"
+                name="journeyID"
                 type="hidden"
-                value="<%=data[i].email%>"
+                value="<%=data[i]._id%>"
               />
+              <input type="hidden" name="journeyList" value="<%=JSON.stringify(data)%>">
               <button class="btn" type="submit">Request</button>
             </form>
           </li>
