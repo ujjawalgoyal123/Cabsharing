@@ -64,6 +64,10 @@ app.use("/register", routereg);
 var routedash = require("./routes/dashboard");
 app.use("/dashboard", routedash);
 
+var routedashdriver = require("./routes/dashboarddriver");
+app.use("/dashboarddriver", routedashdriver);
+
+
 var routeout = require("./routes/logout");
 app.use("/logout", routeout);
 
@@ -72,6 +76,9 @@ app.use("/travelform", routetravel);
 
 var routeprofile = require("./routes/profile");
 app.use("/profile", routeprofile);
+
+var routeprofiledriver = require("./routes/profiledriver");
+app.use("/profiledriver", routeprofiledriver);
 
 var routeSearch = require("./routes/search");
 app.use("/search", routeSearch);
