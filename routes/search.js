@@ -37,7 +37,7 @@ router.get("/", function (req, res) {
   res.render("search", { isPost: false, user: req.user });
 });
 
-router.post("/", jsonParser, (req, res) => {
+router.post("/", jsonParser, function (req, res) {
   const fromGET = req.body.fromGET;
   if (fromGET) {
     const destination = req.body.destination;
