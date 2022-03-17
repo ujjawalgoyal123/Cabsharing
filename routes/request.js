@@ -13,9 +13,27 @@ const User = require("../models/User");
 const Travel = require("../models/travel");
 const { response } = require("express");
 
-router.post("/", jsonParser, function (req, res) {
-  console.log(req.user);
-  res.render("request", { reciver: req.body.reciver_email, user: req.user });
+router.get("/", function (req, res) {
+  User.findById(req.user._id, "Journey_id", function (err, userData) {
+    if (err) {
+      console.log(err);
+    } else {
+      var dataArr = new Array();
+      userData.Journey_id.forEach((journeyID) => {
+        Travel.findById(journeyID, function (error, journeyData) {
+          if (journeyData) {
+            var data = {
+              pending: journeyData.pending,
+              accept: journeyData.accept,
+              Noof: journeyData.Noof,
+            };
+            dataArr.push(data);
+          }
+        });
+      });
+      console.log("Data Array is now : ", dataArr);
+      res.render("request", { dataArr: dataArr });
+    }
+  });
 });
-
 module.exports = router;
