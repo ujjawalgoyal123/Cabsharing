@@ -11,29 +11,32 @@ const valiDate = require("validate-date");
 //Load models
 const User = require("../models/User");
 const Travel = require("../models/travel");
-const { response } = require("express");
 
 router.get("/", function (req, res) {
-  User.findById(req.user._id, "Journey_id", function (err, userData) {
-    if (err) {
-      console.log(err);
-    } else {
-      var dataArr = new Array();
-      userData.Journey_id.forEach((journeyID) => {
-        Travel.findById(journeyID, function (error, journeyData) {
-          if (journeyData) {
-            var data = {
-              pending: journeyData.pending,
-              accept: journeyData.accept,
-              Noof: journeyData.Noof,
-            };
-            dataArr.push(data);
-          }
+  User.findById(req.user._id, "Journey_id", async function (err, result) {
+    if (err) console.log(err);
+    else {
+      var journeyDataArr = [];
+      const journeyIdArr = result.Journey_id;
+      for (const journeyID of journeyIdArr) {
+        const journeyData = await Travel.findById(journeyID).catch(
+          console.error
+        );
+
+        if (!journeyData) continue;
+
+        journeyDataArr.push({
+          _id: journeyData._id,
+          origin: journeyData.origin,
+          destination: journeyData.destination,
+          accept: journeyData.accept,
+          pending: journeyData.pending,
         });
-      });
-      console.log("Data Array is now : ", dataArr);
-      res.render("request", { dataArr: dataArr });
+      }
+      console.log(journeyDataArr);
+      res.render("request", { journeyDataArr: journeyDataArr });
     }
   });
 });
+
 module.exports = router;
