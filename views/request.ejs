@@ -36,11 +36,21 @@
         <li>
           <%=requester%> has requested you for share the cab for
           <%=journeyData.origin%> to <%=journeyData.destination%>
+          <form action="/request" method="post">
+            <input
+              type="hidden"
+              name="journeyID"
+              value="<%=journeyData._id%>"
+            />
+            <input type="hidden" name="Noof" value="<%=journeyData.Noof%>" />
+            <input type="hidden" name="requesterEmail" value="<%=requester%>" />
+            <button type="submit" name="response" value="accept">ACCEPT</button>
+            <button type="submit" name="response" value="reject">REJECT</button>
+          </form>
         </li>
         <% } %>
       </ul>
       <% } %>
     </div>
-    
   </body>
 </html>

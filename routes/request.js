@@ -27,16 +27,42 @@ router.get("/", function (req, res) {
 
         journeyDataArr.push({
           _id: journeyData._id,
+          Noof: journeyData.Noof,
           origin: journeyData.origin,
           destination: journeyData.destination,
           accept: journeyData.accept,
           pending: journeyData.pending,
         });
       }
-      console.log(journeyDataArr);
       res.render("request", { journeyDataArr: journeyDataArr });
     }
   });
+});
+
+router.post("/", jsonParser, async function (req, res) {
+  const action = req.body.response;
+  const journeyID = req.body.journeyID;
+  const requesterEmail = req.body.requesterEmail;
+
+  const Journey = await Travel.findById(journeyID).catch(console.error);
+  const Noof = Journey.Noof;
+  const currentNo = Journey.accept.length;
+  console.log(Noof, typeof Noof, currentNo, typeof currentNo);
+  if (currentNo == Noof) {
+    console.log("Full"); // Full message should pop up and the pending array should empty
+    res.redirect("request");
+  } else if (action == "accept") {
+    Travel.findByIdAndUpdate(journeyID, {
+      $pull: { pending: requesterEmail },
+      $push: { accept: requesterEmail },
+    }).catch(console.error);
+    res.redirect("request");
+  } else {
+    Travel.findByIdAndUpdate(journeyID, {
+      $pull: { pending: requesterEmail },
+    }).catch(console.error);
+    res.redirect("request");
+  }
 });
 
 module.exports = router;
